@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gocheckfx.controllers.DashboardController">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #336699;" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Panel de Administración" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="welcomeLabel" text="Bienvenido, Admin" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="180.0" spacing="10.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="dateLabel" text="Fecha: 01/01/2023">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="employeesButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Empleados" />
+                <Button fx:id="shiftsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Turnos" />
+                <Button fx:id="positionsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Puestos" />
+                <Button fx:id="codigosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Códigos QR/Barras" />
+                <Button fx:id="reportsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Reportes" />
+                <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="logoutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #cc0000;" text="Cerrar Sesión" textFill="WHITE" />
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="realTimeTab" text="Asistencias en Tiempo Real">
+                    <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                            <center>
+                                <TableView fx:id="realTimeTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="rtEmployeeCol" prefWidth="150.0" text="Empleado" />
+                                        <TableColumn fx:id="rtCodeCol" prefWidth="90.0" text="Código" />
+                                        <TableColumn fx:id="rtStatusCol" prefWidth="90.0" text="Estado" />
+                                        <TableColumn fx:id="rtEntryCol" prefWidth="90.0" text="Entrada" />
+                                        <TableColumn fx:id="rtExitCol" prefWidth="90.0" text="Salida" />
+                                        <TableColumn fx:id="rtBreak1Col" prefWidth="110.0" text="Descanso 1" />
+                                        <TableColumn fx:id="rtBreak2Col" prefWidth="110.0" text="Descanso 2" />
+                                    </columns>
+                                </TableView>
+                            </center>
+                            <top>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="50.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="refreshRealTimeButton" mnemonicParsing="false" text="Actualizar" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </top>
+                        </BorderPane>
+                    </content>
+                </Tab>
+                <Tab text="Resumen">
+                    <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                            <center>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Label text="Resumen del día">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox alignment="CENTER" spacing="40.0">
+                                            <children>
+                                                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 10;">
+                                                    <children>
+                                                        <Label text="Presentes" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="16.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="15" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="36.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #F44336; -fx-background-radius: 10;">
+                                                    <children>
+                                                        <Label text="Faltas" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="16.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="2" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="36.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #FFC107; -fx-background-radius: 10;">
+                                                    <children>
+                                                        <Label text="Retardos" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="16.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="3" textFill="WHITE">
+                                                            <font>
+                                                                <Font size="36.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <Label text="Información actualizada en tiempo real">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </center>
+                        </BorderPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

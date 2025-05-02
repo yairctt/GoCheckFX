@@ -1,0 +1,162 @@
+/* Estilos generales */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: white;
+}
+
+/* Botones comunes */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 3px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button:pressed {
+    -fx-background-color: #1c6ea4;
+}
+
+/* Botón de cancelar */
+.button.cancel {
+    -fx-background-color: #95a5a6;
+}
+
+.button.cancel:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Botón de eliminar */
+.button.delete {
+    -fx-background-color: #e74c3c;
+}
+
+.button.delete:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Campos de texto */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+    -fx-background-color: white;
+}
+
+/* Tablas */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 3px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #336699;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #cfe2f3;
+    -fx-text-fill: #333333;
+}
+
+/* Estados de asistencia en la tabla */
+.table-row-cell .table-cell.estado-presente {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell .table-cell.estado-falta {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell .table-cell.estado-retardo {
+    -fx-text-fill: #f39c12;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell .table-cell.estado-justificado {
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+}
+
+/* Estilos para pestañas */
+.tab-pane {
+    -fx-tab-min-width: 120px;
+}
+
+.tab {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 5px 10px;
+}
+
+.tab:selected {
+    -fx-background-color: #336699;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Paneles de información */
+.info-panel {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+/* Estilos para diálogos */
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #336699;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+/* Estilos para fecha */
+.date-picker {
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 3px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
