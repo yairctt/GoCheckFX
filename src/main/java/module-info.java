@@ -12,7 +12,8 @@ module org.example.gocheckfx {
     requires com.google.zxing.javase;  // Para usar la funcionalidad de ZXing en Java SE
     requires webcam.capture;  // Para interactuar con la cámara web
     requires org.json;
-    requires javafx.swing;  // Para manejar JSON
+    requires javafx.swing;
+    requires jbcrypt;  // Para manejar JSON
 
     opens org.example.gocheckfx to javafx.fxml;  // Permite el acceso a la clase principal de la aplicación desde FXML
     opens org.example.gocheckfx.controllers to javafx.fxml;  // Permite el acceso a los controladores FXML

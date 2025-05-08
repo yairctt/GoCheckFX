@@ -10,23 +10,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 
-<BorderPane style="-fx-background-image: url('/org/example/gocheckfx/images/logo.jpg'); -fx-background-position: left; -fx-background-repeat: no-repeat; -fx-background-size: cover;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gocheckfx.controllers.EmployeeScanController">
+<BorderPane style="-fx-background-image: url('/org/example/gocheckfx/images/logo.jpg'); 
+                  -fx-background-position: left; 
+                  -fx-background-repeat: no-repeat; 
+                  -fx-background-size: cover;" 
+            xmlns="http://javafx.com/javafx/11.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="org.example.gocheckfx.controllers.EmployeeScanController">
     <top>
-        <HBox alignment="CENTER" prefHeight="100.0" spacing="30.0" style="-fx-background-color: #336699; -fx-border-color: #2d5a8a; -fx-border-width: 0 0 1 0;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="100.0" spacing="30.0" 
+              style="-fx-background-color: linear-gradient(to right, #336699, #2d5a8a);
+                     -fx-border-color: transparent;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);" 
+              BorderPane.alignment="CENTER">
             <children>
                 <Label text="GoCheck - Control de Asistencia" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="28.0" />
+                        <Font name="Arial Bold" size="32.0" />
                     </font>
                     <effect>
-                        <DropShadow color="#00000033" radius="5.0" spread="0.2" />
+                        <DropShadow color="#00000066" radius="8.0" spread="0.3" />
                     </effect>
                 </Label>
                 <Label fx:id="timeLabel" text="00:00:00 - 01/01/2023" textFill="WHITE">
                     <font>
-                        <Font name="Arial" size="20.0" />
+                        <Font name="Arial" size="22.0" />
                     </font>
+                    <effect>
+                        <DropShadow color="#00000040" radius="5.0" spread="0.2" />
+                    </effect>
                 </Label>
             </children>
             <padding>
@@ -35,14 +49,23 @@
         </HBox>
     </top>
     <center>
-        <HBox alignment="TOP_LEFT" spacing="40.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-border-radius: 10px; -fx-background-radius: 10px;" BorderPane.alignment="TOP_LEFT">
+        <HBox alignment="TOP_LEFT" spacing="40.0" 
+              style="-fx-background-color: rgba(255, 255, 255, 0.9);
+                     -fx-border-radius: 15px;
+                     -fx-background-radius: 15px;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);" 
+              BorderPane.alignment="TOP_LEFT">
             <children>
-                <!-- Columna izquierda: Cámara -->
                 <VBox alignment="TOP_LEFT" prefWidth="600.0" spacing="30.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Pane fx:id="cameraPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10px;">
+                        <Pane fx:id="cameraPane" prefHeight="400.0" prefWidth="600.0" 
+                              style="-fx-background-color: #f0f0f0;
+                                     -fx-background-radius: 15px;
+                                     -fx-border-radius: 15px;
+                                     -fx-border-color: #e0e0e0;
+                                     -fx-border-width: 1px;">
                             <effect>
-                                <DropShadow color="#00000033" radius="8.0" spread="0.2" />
+                                <DropShadow color="#00000040" radius="10.0" spread="0.1" />
                             </effect>
                         </Pane>
                     </children>
@@ -50,70 +73,89 @@
                         <Insets top="30.0" left="30.0" />
                     </padding>
                 </VBox>
-                <!-- Columna derecha: Texto y controles -->
                 <VBox alignment="TOP_LEFT" prefWidth="400.0" spacing="30.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label text="Escanea tu código para registrarte">
+                        <Label text="Escanea tu código para registrarte" 
+                               style="-fx-text-fill: #336699;">
                             <font>
-                                <Font name="Arial" size="22.0" />
+                                <Font name="Arial" size="24.0" />
                             </font>
                             <effect>
-                                <DropShadow color="#00000033" radius="3.0" spread="0.2" />
+                                <DropShadow color="#00000033" radius="3.0" spread="0.1" />
                             </effect>
                         </Label>
                         <HBox alignment="CENTER_LEFT" spacing="20.0">
                             <children>
-                                <TextField fx:id="codeField" prefHeight="45.0" prefWidth="250.0" promptText="Código de empleado" style="-fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #cccccc;">
+                                <TextField fx:id="codeField" prefHeight="50.0" prefWidth="250.0" 
+                                         promptText="Código de empleado" 
+                                         style="-fx-background-radius: 8px;
+                                                -fx-border-radius: 8px;
+                                                -fx-border-color: #cccccc;
+                                                -fx-background-color: rgba(255,255,255,0.9);
+                                                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);">
                                     <font>
                                         <Font name="Arial" size="16.0" />
                                     </font>
                                 </TextField>
-                                <Button fx:id="scanButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Iniciar Escaneo" style="-fx-background-color: #336699; -fx-text-fill: white; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-cursor: hand;">
+                                <Button fx:id="scanButton" mnemonicParsing="false" 
+                                        prefHeight="50.0" prefWidth="180.0" 
+                                        text="Iniciar Escaneo" 
+                                        style="-fx-background-color: linear-gradient(to right, #336699, #2d5a8a);
+                                               -fx-text-fill: white;
+                                               -fx-background-radius: 8px;
+                                               -fx-border-radius: 8px;
+                                               -fx-cursor: hand;">
                                     <font>
                                         <Font name="Arial Bold" size="16.0" />
                                     </font>
                                     <effect>
-                                        <DropShadow color="#00000033" radius="3.0" spread="0.2" />
+                                        <DropShadow color="#00000040" radius="5.0" spread="0.1" />
                                     </effect>
                                 </Button>
                             </children>
                         </HBox>
-                        <Label fx:id="statusLabel" text="Preparando cámara..." textFill="#0066cc">
+                        <Label fx:id="statusLabel" text="Preparando cámara..." 
+                               style="-fx-text-fill: #0066cc;">
                             <font>
                                 <Font name="Arial Italic" size="18.0" />
                             </font>
                         </Label>
-                        <VBox fx:id="employeeInfoBox" alignment="CENTER" prefHeight="250.0" prefWidth="350.0" spacing="15.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-padding: 25px;">
+                        <VBox fx:id="employeeInfoBox" alignment="CENTER" 
+                              prefHeight="250.0" prefWidth="350.0" spacing="15.0" 
+                              style="-fx-background-color: rgba(240,240,240,0.9);
+                                     -fx-border-color: #cccccc;
+                                     -fx-border-radius: 15px;
+                                     -fx-background-radius: 15px;
+                                     -fx-padding: 25px;
+                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);">
                             <children>
-                                <Label fx:id="employeeNameLabel" text="Nombre del Empleado">
+                                <Label fx:id="employeeNameLabel" text="Nombre del Empleado" 
+                                       style="-fx-text-fill: #336699;">
                                     <font>
-                                        <Font name="Arial Bold" size="22.0" />
+                                        <Font name="Arial Bold" size="24.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="positionLabel" text="Puesto: [Puesto]">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Arial" size="18.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="shiftLabel" text="Turno: [Turno]">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Arial" size="18.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="lastActionLabel" text="Última acción: [Acción]">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Arial" size="18.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="nextActionLabel" text="Próxima acción: [Acción]">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Arial" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
-                            <effect>
-                                <DropShadow color="#00000033" radius="8.0" spread="0.2" />
-                            </effect>
                         </VBox>
                     </children>
                     <padding>
@@ -127,19 +169,29 @@
         </HBox>
     </center>
     <bottom>
-        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #cccccc; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_RIGHT" prefHeight="80.0" spacing="20.0" 
+              style="-fx-background-color: linear-gradient(to right, #f5f5f5, #e8e8e8);
+                     -fx-border-color: #cccccc;
+                     -fx-border-width: 1 0 0 0;" 
+              BorderPane.alignment="CENTER">
             <children>
-                <Label text="© 2023 GoCheck - Sistema de Control de Asistencia">
+                <Label text="© 2025 GoCheck - Sistema de Control De Empleados"
+                       style="-fx-text-fill: #666666;">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
                 </Label>
-                <Button fx:id="adminLoginButton" mnemonicParsing="false" text="Admin" style="-fx-background-color: #336699; -fx-text-fill: white; -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-cursor: hand;">
+                <Button fx:id="adminLoginButton" mnemonicParsing="false" 
+                        text="Admin" 
+                        style="-fx-background-color: linear-gradient(to right, #336699, #2d5a8a);
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8px;
+                               -fx-cursor: hand;">
                     <font>
                         <Font name="Arial Bold" size="14.0" />
                     </font>
                     <effect>
-                        <DropShadow color="#00000033" radius="3.0" spread="0.2" />
+                        <DropShadow color="#00000040" radius="5.0" spread="0.1" />
                     </effect>
                 </Button>
             </children>

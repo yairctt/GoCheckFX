@@ -1,5 +1,6 @@
 package org.example.gocheckfx.controllers;
 
+import javafx.scene.image.ImageView;
 import org.example.gocheckfx.App;
 import org.example.gocheckfx.dao.AsistenciaDAO;
 import org.example.gocheckfx.dao.EmpleadoDAO;
@@ -8,6 +9,8 @@ import org.example.gocheckfx.models.Empleado;
 import org.example.gocheckfx.utils.AlertUtils;
 import org.example.gocheckfx.utils.QRCodeScanner;
 
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,13 +18,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.ResourceBundle;
+
 
 /**
  * Controlador para la pantalla de escaneo de empleados.
@@ -170,7 +175,7 @@ public class EmployeeScanController implements Initializable {
             asistencia.setHoraEntrada(ahora);
             asistencia.setEstado("PRESENTE");
 
-            if (asistenciaDAO.crearAsistencia(asistencia)) {
+            if (asistenciaDAO.registrarAsistencia(asistencia)) {
                 lastActionLabel.setText("Última acción: Entrada registrada a las " +
                         ahora.format(timeFormatter));
                 nextActionLabel.setText("Próxima acción: Inicio de descanso");

@@ -49,6 +49,9 @@ public class DashboardController implements Initializable {
     @FXML private Button reportsButton;
     @FXML private Button codigosButton; // Nuevo botón para gestión de códigos
     @FXML private Button logoutButton;
+    @FXML private Button horarioButton; // Nuevo botón para horarios
+    @FXML private Button permisosButton;
+    @FXML private Button usuariosButton;
 
     private AsistenciaDAO asistenciaDAO;
     private DateTimeFormatter timeFormatter;
@@ -78,7 +81,7 @@ public class DashboardController implements Initializable {
         configurarTablaRealTime();
 
         // Cargar datos iniciales
-        cargarAsistenciasHoy();
+        cargarAsistenciasDelDia();
 
         // Configurar eventos de botones
         refreshRealTimeButton.setOnAction(e -> cargarAsistenciasHoy());
@@ -87,12 +90,10 @@ public class DashboardController implements Initializable {
                 App.openWindow("/org/example/gocheckfx/employee_management.fxml", "GoCheck - Gestión de Empleados"));
 
         shiftsButton.setOnAction(e ->
-                AlertUtils.mostrarInfo("Función en Desarrollo",
-                        "La gestión de turnos estará disponible próximamente."));
+                App.openWindow("/org/example/gocheckfx/turno_management.fxml", "GoCheck - Gestión de Turnos"));
 
         positionsButton.setOnAction(e ->
-                AlertUtils.mostrarInfo("Función en Desarrollo",
-                        "La gestión de puestos estará disponible próximamente."));
+                App.openWindow("/org/example/gocheckfx/puesto_management.fxml", "GoCheck - Gestión de Puestos"));
 
         reportsButton.setOnAction(e ->
                 App.openWindow("/org/example/gocheckfx/reports.fxml", "GoCheck - Reportes"));
@@ -101,6 +102,20 @@ public class DashboardController implements Initializable {
         codigosButton.setOnAction(e ->
                 App.openWindow("/org/example/gocheckfx/codigos.fxml", "GoCheck - Gestión de Códigos QR/Barras"));
 
+        horarioButton.setOnAction(e ->
+                App.openWindow("/org/example/gocheckfx/horario_management.fxml", "GoCheck - Horarios de Empleados"));
+
+        permisosButton.setOnAction(e ->
+                App.openWindow("/org/example/gocheckfx/permiso_management.fxml", "GoCheck - Gestión de Permisos"));
+        usuariosButton.setOnAction(e -> {
+            // Verificar que el usuario actual sea administrador
+            if (AdminLoginController.getUsuarioAutenticado().isEsAdmin()) {
+                App.openWindow("/org/example/gocheckfx/usuario_management.fxml", "GoCheck - Gestión de Usuarios");
+            } else {
+                AlertUtils.mostrarAdvertencia("Acceso Denegado",
+                        "Solo los administradores pueden acceder a esta función.");
+            }
+        });
         logoutButton.setOnAction(e -> {
             AdminLoginController.cerrarSesion();
             cerrarVentana();
@@ -184,7 +199,7 @@ public class DashboardController implements Initializable {
      * Carga las asistencias del día actual
      */
     private void cargarAsistenciasHoy() {
-        List<Asistencia> asistencias = asistenciaDAO.obtenerAsistenciasPorFecha(LocalDate.now());
+        List<Asistencia> asistencias = asistenciaDAO.obtenerAsistenciasConDatosEmpleado(LocalDate.now());
         ObservableList<Asistencia> data = FXCollections.observableArrayList(asistencias);
         realTimeTable.setItems(data);
     }
@@ -250,5 +265,27 @@ public class DashboardController implements Initializable {
     private void cerrarVentana() {
         Stage stage = (Stage) mainTabPane.getScene().getWindow();
         stage.close();
+    }
+
+    private void cargarAsistenciasDelDia() {
+        LocalDate fechaActual = LocalDate.now();
+
+        // Usar el nuevo método que trae todos los empleados
+        List<Asistencia> asistencias = asistenciaDAO.obtenerAsistenciasConTodosEmpleados(fechaActual);
+
+        // Actualizar la tabla
+        ObservableList<Asistencia> data = FXCollections.observableArrayList(asistencias);
+        realTimeTable.setItems(data);
+
+        // Actualizar etiqueta con información
+        int totalEmpleados = asistencias.size();
+        int presentes = (int) asistencias.stream()
+                .filter(a -> a.getHoraEntrada() != null)
+                .count();
+        int faltas = totalEmpleados - presentes;
+
+        dateLabel.setText("Fecha: " + fechaActual.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+                " - Empleados: " + totalEmpleados + " | Presentes: " + presentes +
+                " | Faltas: " + faltas);
     }
 }

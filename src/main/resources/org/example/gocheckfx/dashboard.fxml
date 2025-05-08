@@ -47,6 +47,9 @@
                 <Button fx:id="employeesButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Empleados" />
                 <Button fx:id="shiftsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Turnos" />
                 <Button fx:id="positionsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Puestos" />
+                <Button fx:id="horarioButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Horarios" />
+                <Button fx:id="permisosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Permisos" />
+                <Button fx:id="usuariosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Usuarios" />
                 <Button fx:id="codigosButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Códigos QR/Barras" />
                 <Button fx:id="reportsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="Reportes" />
                 <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">

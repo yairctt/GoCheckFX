@@ -1,5 +1,6 @@
 package org.example.gocheckfx.models;
 
+
 import java.time.LocalDate;
 
 /**

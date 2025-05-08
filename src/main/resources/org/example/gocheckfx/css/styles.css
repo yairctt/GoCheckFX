@@ -160,3 +160,10 @@
 .date-picker .arrow-button .arrow {
     -fx-background-color: white;
 }
+
+.button-hover:hover {
+    -fx-background-color: #5a9bd4;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-transition: all 0.2s ease-in-out;
+}
